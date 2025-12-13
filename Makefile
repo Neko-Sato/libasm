@@ -6,7 +6,7 @@
 #    By: hshimizu <hshimizu@42tokyo.student.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/13 23:48:12 by hshimizu          #+#    #+#              #
-#    Updated: 2025/12/14 03:40:23 by hshimizu         ###   ########.fr        #
+#    Updated: 2025/12/14 05:10:17 by hshimizu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,20 +18,17 @@ endif
 NAME		:= libasm.a
 
 SRCS		:= \
-	ft_strlen.asm \
-	ft_strcpy.asm \
-	ft_strcmp.asm \
-	ft_write.asm \
-	ft_read.asm \
-	ft_strdup.asm
+	ft_strlen.s \
+	ft_strcpy.s \
+	ft_strcmp.s \
+	ft_write.s \
+	ft_read.s \
+	ft_strdup.s
 
-OBJS		:= $(addprefix .out/, $(SRCS:.asm=.o))
+OBJS		:= $(addprefix .out/, $(SRCS:.s=.o))
 
 NASM		:= nasm
 NASMFLAGS	:= -f elf64
-AR			:= ar
-CC			:= cc
-CCFLAGS		:=
 
 .PHONY: all clean fclean re
 
@@ -41,7 +38,7 @@ bonus: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) rcs $@ $^
 
-.out/%.o: %.asm
+.out/%.o: %.s
 	@mkdir -p $(@D)
 	$(NASM) $(NASMFLAGS) $< -o $@
 
@@ -55,6 +52,3 @@ fclean:
 re:
 	@$(MAKE) fclean
 	@$(MAKE)
-
-test: test.c $(NAME)
-	$(CC) $(CCFLAGS) $^ -o $@
