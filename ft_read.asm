@@ -1,7 +1,7 @@
 section .text
 global ft_read
 
-extern _errno_location
+extern __errno_location
 
 ft_read:
     mov rax, 0
@@ -10,7 +10,7 @@ ft_read:
     jns .done
     mov rdi, rax
     neg rdi
-    call _errno_location
+    call __errno_location wrt ..plt
     mov [rax], rdi
     mov rax, -1
 .done:
