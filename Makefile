@@ -6,7 +6,7 @@
 #    By: hshimizu <hshimizu@42tokyo.student.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/13 23:48:12 by hshimizu          #+#    #+#              #
-#    Updated: 2025/12/14 03:31:26 by hshimizu         ###   ########.fr        #
+#    Updated: 2025/12/14 03:40:23 by hshimizu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCS		:= \
 OBJS		:= $(addprefix .out/, $(SRCS:.asm=.o))
 
 NASM		:= nasm
-NASMFLAGS	:=
+NASMFLAGS	:= -f elf64
 AR			:= ar
 CC			:= cc
 CCFLAGS		:=
