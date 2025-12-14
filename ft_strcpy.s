@@ -4,9 +4,9 @@ global ft_strcpy
 ft_strcpy:
     mov rax, rdi
 .loop:
-    mov bl, [rsi]
-    mov [rdi], bl
-    test bl, bl
+    mov dl, [rsi]
+    mov [rdi], dl
+    test dl, dl
     je .done
     inc rdi
     inc rsi

@@ -4,10 +4,10 @@ global ft_strcmp
 ft_strcmp:
 .loop:
     movzx eax, byte [rdi]
-    movzx ebx, byte [rsi]
-    sub eax, ebx
+    movzx edx, byte [rsi]
+    sub eax, edx
     jne .done
-    test ebx, ebx
+    test edx, edx
     je .done
     inc rdi
     inc rsi

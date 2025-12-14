@@ -4,8 +4,8 @@ global ft_strlen
 ft_strlen:
     xor rax, rax
 .loop:
-    mov bl, byte [rdi + rax]
-    test bl, bl
+    mov dl, byte [rdi + rax]
+    test dl, dl
     je .done
     inc rax
     jmp .loop
