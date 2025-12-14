@@ -6,7 +6,7 @@
 #    By: hshimizu <hshimizu@42tokyo.student.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/13 23:48:12 by hshimizu          #+#    #+#              #
-#    Updated: 2025/12/14 05:10:17 by hshimizu         ###   ########.fr        #
+#    Updated: 2025/12/14 23:38:25 by hshimizu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS		:= \
 	ft_strcmp.s \
 	ft_write.s \
 	ft_read.s \
-	ft_strdup.s
+	ft_strdup.s \
+	ft_atoi_base.s
 
 OBJS		:= $(addprefix .out/, $(SRCS:.s=.o))
 
