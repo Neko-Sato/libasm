@@ -6,7 +6,7 @@
 #    By: hshimizu <hshimizu@42tokyo.student.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/13 23:48:12 by hshimizu          #+#    #+#              #
-#    Updated: 2025/12/14 23:38:25 by hshimizu         ###   ########.fr        #
+#    Updated: 2025/12/15 02:00:06 by hshimizu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ SRCS		:= \
 	ft_write.s \
 	ft_read.s \
 	ft_strdup.s \
-	ft_atoi_base.s
+	ft_atoi_base.s \
+	ft_list_push_front.s \
+	ft_list_size.s
 
 OBJS		:= $(addprefix .out/, $(SRCS:.s=.o))
 

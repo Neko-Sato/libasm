@@ -61,13 +61,13 @@ ft_atoi_base:
 .done2:
     xor r9, r9; sign = 0
     cmp r8b, 45; *s == '-'
-    je .sign_neg
+    je .negative
     cmp r8b, 43; *s == '+'
-    je .sign_pos
+    je .positive
     jmp .loop3
-.sign_neg:
+.negative:
     inc r9; sign = 1
-.sign_pos:
+.positive:
     inc rdi; s++
 .loop3:
     mov r8b, [rdi]
