@@ -6,14 +6,9 @@
 #    By: hshimizu <hshimizu@42tokyo.student.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/13 23:48:12 by hshimizu          #+#    #+#              #
-#    Updated: 2025/12/15 02:00:06 by hshimizu         ###   ########.fr        #
+#    Updated: 2025/12/15 02:10:29 by hshimizu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-ARCH		:= $(shell uname -m)
-ifneq ($(ARCH), x86_64)
-    $(error Unsupported architecture: $(ARCH))
-endif
 
 NAME		:= libasm.a
 
