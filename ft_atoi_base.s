@@ -12,18 +12,14 @@ ft_atoi_base:
     je .finally
     cmp r8b, 45; base[cnt] == '-' 
     je .finally
-    cmp r8b, 32; base[cnt] == ' '
+    cmp r8b, 32; base[cnt] == '　' 
     je .finally
-    cmp r8b, 9; base[cnt] == '\t'
-    je .finally
-    cmp r8b, 10; base[cnt] == '\n'
-    je .finally
-    cmp r8b, 11; base[cnt] == '\v'
-    je .finally
-    cmp r8b, 12; base[cnt] == '\f'
-    je .finally
-    cmp r8b, 13; base[cnt] == '\r'
-    je .finally
+    cmp r8b, 9; base[cnt] < '\t'
+    jb .not_space
+    cmp r8b, 13; base[cnt] > '\r'
+    ja .not_space
+    jmp .finally
+.not_space:
     xor rdx, rdx; i = 0
 .loop1:
     cmp rdx, rcx; i >= cnt
@@ -40,22 +36,13 @@ ft_atoi_base:
     jl .finally
 .loop2:
     mov r8b, [rdi]
-    test r8b, r8b; *s == '\0'
-    je .done2
-    cmp r8b, 32; *s == ' '
-    je .skip
-    cmp r8b, 9; *s == '\t'
-    je .skip
-    cmp r8b, 10; *s == '\n'
-    je .skip
-    cmp r8b, 11; *s == '\v'
-    je .skip
-    cmp r8b, 12; *s == '\f'
-    je .skip
-    cmp r8b, 13; *s == '\r'
-    je .skip
-    jmp .done2
-.skip:
+    cmp r8b, 32; base[cnt] == '　' 
+    je .skip_space
+    cmp r8b, 9; base[cnt] < '\t'
+    jb .done2
+    cmp r8b, 13; base[cnt] > '\r'
+    ja .done2
+.skip_space:
     inc rdi; s++
     jmp .loop2
 .done2:
