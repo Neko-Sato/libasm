@@ -7,11 +7,11 @@ section .text
 global ft_list_size
 
 ft_list_size:
-    xor eax, eax
+    xor rax, rax
 .loop:
     test rdi, rdi
     je .done
-    inc eax
+    inc rax
     mov rdi, [rdi + t_list.next]
 .done
     ret

@@ -8,11 +8,10 @@ ft_read:
     syscall
     test rax, rax
     jns .done
-    mov rdi, rax
-    neg rdi
-    sub rsp, 8
+    neg rax
+    push rax
     call __errno_location wrt ..plt
-    add rsp, 8
+    pop rdi
     mov [rax], rdi
     mov rax, -1
 .done:
