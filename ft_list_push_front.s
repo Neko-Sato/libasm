@@ -9,16 +9,18 @@ section .text
 global ft_list_push_front
 
 ft_list_push_front:
-    mov rdx, rdi
+    push rdi
+    push rsi
+    sub rsp, 8
     mov rdi, t_list_size
-    sub  rsp, 8
     call malloc wrt ..plt
-    add  rsp, 8
+    add rsp, 8
+    pop rsi
+    pop rdi
     test rax, rax
     je .done
     mov [rax + t_list.data], rsi
-    mov rdi, [rdx]
     mov [rax + t_list.next], rdi
-    mov [rdx], rax
+    mov [rdi], rax
 .done:
     ret
