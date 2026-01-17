@@ -20,7 +20,8 @@ ft_list_push_front:
     test rax, rax
     je .done
     mov [rax + t_list.data], rsi
-    mov [rax + t_list.next], rdi
+    mov rsi, [rdi]
+    mov [rax + t_list.next], rsi
     mov [rdi], rax
 .done:
     ret
