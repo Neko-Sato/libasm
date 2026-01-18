@@ -110,6 +110,14 @@ ft_list_sort:
   pop rbp
   ret
 
+; rbx tmp
+; r12: b
+; r13: a
+; r14: n
+; r15: cnk
+; [rsp]: begin
+; [rsp+8]: cmp 
+
 ; void ft_list_sort(t_list **begin, int (*cmp)(void *, void *)) {
 ;   size_t cnk, n;
 ;   t_list **a, **b, *tmp;
