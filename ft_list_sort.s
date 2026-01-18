@@ -52,7 +52,7 @@ ft_list_sort:
   mov rax, [r13]
   mov rsi, [rax + t_list.data]   ; rsi = (*a)->data
   call [rsp]                      ; cmp((*b)->data, (*a)->data)
-  test rax, rax
+  test eax, eax
   js .found_larger_a              ; if (result < 0)
   mov rax, [r13]
   lea r13, [rax + t_list.next]; a = &(*a)->next;
@@ -75,7 +75,7 @@ ft_list_sort:
   mov rsi, [rax + t_list.data]   ; rsi = (*a)->data
   mov rdi, [rbx + t_list.data]   ; rdi = tmp->data
   call [rsp]                      ; cmp(tmp->data, (*a)->data)
-  test rax, rax
+  test eax, eax
   js .found_smaller_b             ; if (result < 0)
   jmp .scan_smaller_b
 .found_smaller_b:
@@ -109,3 +109,77 @@ ft_list_sort:
   pop r15
   pop rbp
   ret
+
+; void ft_list_sort(t_list **begin, int (*cmp)(void *, void *)) {
+;   size_t cnk, n;
+;   t_list **a, **b, *tmp;
+
+;   cnk = 1;
+; top:
+;   a = begin;
+
+; loop:
+;   if (!*a)
+;     goto done;
+;   b = a;
+;   n = cnk;
+
+; advance_b:
+;   if (!n || !*b)
+;     goto check_b;
+;   b = &(*b)->next;
+;   --n;
+;   goto advance_b;
+
+; check_b:
+;   if (!*b)
+;     goto done;
+;   n = cnk;
+
+; merge_loop:
+;   if (!n || !*b)
+;     goto merge_done;
+
+; scan_larger_a:
+;   if (cmp((*b)->data, (*a)->data) < 0)
+;     goto found_larger_a;
+;   a = &(*a)->next;
+;   if (*a == *b)
+;     goto merge_skip;
+;   goto scan_larger_a;
+
+; found_larger_a:
+;   tmp = *a;
+;   *a = *b;
+
+; scan_smaller_b:
+;   a = &(*a)->next;
+;   --n;
+;   if (!n || !*a)
+;     goto found_smaller_b;
+;   if (cmp(tmp->data, (*a)->data) < 0)
+;     goto found_smaller_b;
+;   goto scan_smaller_b;
+
+; found_smaller_b:
+;   *b = *a;
+;   *a = tmp;
+;   goto merge_loop;
+
+; merge_skip:
+;   if (!n || !*b)
+;     goto merge_done;
+;   b = &(*b)->next;
+;   --n;
+;   goto merge_skip;
+
+; merge_done:
+;   a = b;
+;   goto loop;
+
+; done:
+;   if (a == begin)
+;     return;
+;   cnk <<= 1;
+;   goto top;
+; }
