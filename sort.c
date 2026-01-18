@@ -88,7 +88,7 @@ done:
 
 
 int intcmp(void *a, void *b) {
-  return a - b;
+  return *(int *)a - *(int *)b;
 }
 
 int main(int argc, char **argv) {
